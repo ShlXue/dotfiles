@@ -156,13 +156,15 @@ fix_rootpath() {
 exclude_file() {
   local src=$1
 
-  local platform_conf="symlink-$(uname -s).conf" short_path=${src/#$DOTFILES_ROOT\//}
+  local conf_path="configs"
+  local default_conf="$conf_path/symlink.conf"
+  local platform_conf="$conf_path/symlink-$(uname -s).conf" short_path=${src/#$DOTFILES_ROOT\//}
 
   if [[ ! -f $platform_conf ]]; then
     platform_conf=
   fi
   short_path="${short_path/%.symlink}"
-  if [[ !`grep "^$short_path$" symlink.conf` && `grep "^-$short_path$" symlink.conf $platform_conf` ]]; then
+  if [[ !`grep "^$short_path$" $default_conf` && `grep "^-$short_path$" $default_conf $platform_conf` ]]; then
     echo true
   fi
 }
