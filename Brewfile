@@ -6,6 +6,7 @@ brew 'ack'
 brew 'coreutils'
 brew 'go'
 brew 'grc'
+brew 'icdiff'
 brew 'imagemagick'
 brew 'jp2a'
 brew 'libcaca', args: ['with-imlib2']
